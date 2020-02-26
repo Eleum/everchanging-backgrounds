@@ -1,0 +1,45 @@
+<div class="area-container">
+  <header class="area-header">
+    <strong>blablabla service</strong>
+    <nav>
+      <ul>
+        <li><img src="./assets/btn-min.svg" (click)="minimizeWindow()"></li>
+        <li><img src="./assets/btn-close.svg" (click)="closeWindow()"></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="area-body">
+    <div *ngFor="let item of [1]" class="message-container">
+      <div class="message-header">
+        <div class="message-sender-logo">
+          <img src="./assets/img-code.svg">
+        </div>
+        Lorem ipsum dolor sit amet
+      </div>
+      <div class="message-body">
+        <p class="text-title">This is message title</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br><br>Nunc pellentesque erat vel magna posuere,
+          vitae imperdiet lorem luctus. In hac habitasse platea dictumst. Curabitur purus nisi, porttitor ut enim nec,
+          dictum egestas lacus. Pellentesque euismod odio ante.</p>
+        <a href="#" class="message-link">https://oauth.vk.com/blank.html</a>
+        <div class="message-link-content">
+          <div class="link-content-description">
+            <div class="text-title">Link content header</div>
+            <div class="text-subtitle">Link content subheader Link content subheader Link content subheader Link
+              contentLink contentLink contentLink contentLink content
+              subheader</div>
+          </div>
+          <div class="link-content-image">
+            <img src="./assets/screen.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="area-footer">
+    <div>
+      <input type="text" placeholder="Напишите сообщение" (keyup.enter)="sendTestMessage($event.target.value)">
+      <img src="./assets/btn-send.svg">
+    </div>
+  </footer>
+</div>
