@@ -36,12 +36,6 @@
     }
   }
 
-  main {
-    background-color: white;
-    border-left: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
-  }
-
   footer {
     display: flex;
     align-items: center;
@@ -62,7 +56,7 @@
       outline: none;
       color: black;
       font-family: "Open Sans";
-      background-color: inherit;     
+      background-color: inherit;
       padding: 12px;
     }
 
@@ -98,7 +92,6 @@
   }
 
   .message-body {
-
     .message-link {
       color: #2f80ed;
       text-decoration: none;
@@ -113,16 +106,16 @@
         flex: 1;
         min-width: 0;
         max-height: inherit;
-        border-left: thick solid #2f80ed;  
+        border-left: thick solid #2f80ed;
         padding: 0 5px;
-      
+
         div {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
         }
       }
-      
+
       .link-content-image {
         white-space: nowrap;
         > img {
@@ -131,7 +124,7 @@
         }
       }
     }
-    
+
     .text-title {
       font-weight: 700;
     }
@@ -140,10 +133,37 @@
       font-weight: 600;
     }
   }
+
+  .time-range-picker {
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background-color: white;
+  }
+
+  .time-range-picker-element {
+    border: 1px solid;
+    border-radius: 15px 15px 0px 0px;
+    border-left: inherit;
+    border-right: inherit;
+    border-bottom: inherit;
+    border-color: #dbdbdb;
+  }
+}
+
+.area-body-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .area-body {
   flex: 1 1 auto;
+  background-color: white;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
   padding: 15px;
   height: 0px;
   overflow-y: auto;
