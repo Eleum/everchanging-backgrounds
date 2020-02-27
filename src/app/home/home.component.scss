@@ -76,6 +76,10 @@
     width: 18px;
   }
 
+  .message-container {
+    margin-bottom: 15px;
+  }
+
   .message-header {
     display: flex;
     align-items: center;
@@ -141,4 +145,6 @@
 .area-body {
   flex: 1 1 auto;
   padding: 15px;
+  height: 0px;
+  overflow-y: auto;
 }

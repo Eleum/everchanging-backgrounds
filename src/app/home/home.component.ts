@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ElectronService } from '../core/services/electron/electron.service';
 import { HttpClient } from '@angular/common/http';
-import { session } from 'electron';
 
 declare var VK: any;
 

@@ -1,5 +1,5 @@
 {
-  "productName": "angular-electron",
+  "productName": "electron-scheduled-messages",
   "directories": {
     "output": "release/"
   },
