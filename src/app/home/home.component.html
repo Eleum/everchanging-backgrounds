@@ -10,8 +10,8 @@
   </header>
   <div class="area-body-container">
     <div class="area-body">
-      <div *ngFor="let message of messages" class="message-container">
-        <div class="message-header">
+      <div *ngFor="let messageObj of messages" class="message-container">
+        <div *ngIf="messageObj.firstMessage === true || messageObj.shouldSeparateMessages" class="message-header">
           <div class="message-sender-logo">
             <img src="./assets/img-code.svg">
           </div>
@@ -19,13 +19,13 @@
         </div>
         <div class="message-body">
           <!-- <p class="text-title">This is message title</p> -->
-          <p *ngIf="!message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br><br>Nunc pellentesque erat vel
+          <p *ngIf="!messageObj.message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br><br>Nunc pellentesque erat vel
             magna posuere,
             vitae imperdiet lorem luctus. In hac habitasse platea dictumst. Curabitur purus nisi, porttitor ut enim
             nec,
             dictum egestas lacus. Pellentesque euismod odio ante.
           </p>
-          <p *ngIf="message">{{ message }}</p>
+          <p *ngIf="messageObj.message">{{ messageObj.message }}</p>
           <!-- <a href="#" class="message-link">https://oauth.vk.com/blank.html</a>
           <div class="message-link-content">
             <div class="link-content-description">
@@ -49,7 +49,7 @@
   </div>
   <footer class="area-footer">
     <div>
-      <input type="text" placeholder="Напишите сообщение" (keyup.enter)="sendTestMessage($event.target.value)">
+      <input type="text" id="message-input" placeholder="Напишите сообщение" (keyup.enter)="sendTimedMessage($event.target.value)">
       <img src="./assets/btn-send.svg">
     </div>
   </footer>
