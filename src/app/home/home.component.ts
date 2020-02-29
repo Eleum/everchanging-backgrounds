@@ -3,7 +3,6 @@ import { ElectronService } from '../core/services/electron/electron.service';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
-declare var VK: any;
 declare var document: any;
 declare var window: any;
 
@@ -13,8 +12,6 @@ declare var window: any;
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    accessToken = "";
-
     messages: object[] = [];
     messageNotifier = new Subject<string>();
 
@@ -22,11 +19,17 @@ export class HomeComponent implements OnInit {
     timersFinished = false;
     addTimer: Function;
 
-    constructor(private http: HttpClient, private electron: ElectronService) { }
+    regexUrl: RegExp;
+
+    constructor(private http: HttpClient, private electron: ElectronService) { 
+        const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+        this.regexUrl = new RegExp(expression);
+    }
 
     ngOnInit() {
-        let timers = this.timers;
-        let messages = this.messages;
+        const regexUrl = this.regexUrl;
+        const timers = this.timers;
+        const messages = this.messages;
         let shouldSeparateMessages = false;
         let separateMessagesTimer: NodeJS.Timeout;
 
@@ -49,7 +52,12 @@ export class HomeComponent implements OnInit {
         }
 
         function addMessage(message: string) {
-            messages.push({ shouldSeparateMessages, message, firstMessage: messages.length === 0 });
+            messages.push({ 
+                message,
+                shouldSeparateMessages, 
+                firstMessage: messages.length === 0, 
+                hasLink: message.match(regexUrl)
+            });
             
             clearTimeout(separateMessagesTimer);
             shouldSeparateMessages = false;
@@ -75,34 +83,6 @@ export class HomeComponent implements OnInit {
 
         this.addTimer(() => { clearTimeout(timer) }, 2000);
         this.addTimer(() => { addMessage('42') }, 7000);
-        
-        // var BrowserWindow = this.electron.remote.BrowserWindow;
-
-        // const authUrl = 'https://oauth.vk.com/authorize?client_id=&display=popup&redirect_uri=https://oauth.vk.com/blank.html&scope=friends,status&response_type=token&v=5.103&state=123456&revoke=1';
-
-        // let authWindow = new BrowserWindow({ width: 800, height: 600, show: false, webPreferences: { nodeIntegration: false } });
-
-        // authWindow.webContents.on('will-redirect', (event, url) => {
-        //     const parts = url.split('#');
-        //     const params = parts[1]
-        //         .split('&')
-        //         .map(p => p.split('='))
-        //         .reduce((obj, pair) => {
-        //             const [key, value] = pair.map(decodeURIComponent);
-        //             return ({ ...obj, [key]: value })
-        //         }, {});
-
-        //     this.accessToken = params["access_token"];
-
-        //     authWindow.close();
-        // });
-
-        // authWindow.on('close', () => {
-        //     authWindow = null;
-        // });
-
-        // authWindow.loadURL(authUrl);
-        // authWindow.show();
     }
 
     public sendTimedMessage(e: any) {
@@ -111,7 +91,6 @@ export class HomeComponent implements OnInit {
         }
 
         document.getElementById('message-input').value = '';
-        this.timersFinished = false;
         this.addTimer(() => { this.messageNotifier.next(e); }, 3000);
     }
 

@@ -11,33 +11,37 @@
   <div class="area-body-container">
     <div class="area-body">
       <div *ngFor="let messageObj of messages" class="message-container">
-        <div *ngIf="messageObj.firstMessage === true || messageObj.shouldSeparateMessages" class="message-header">
-          <div class="message-sender-logo">
+        <div class="message-content">
+          <div *ngIf="messageObj.firstMessage === true || messageObj.shouldSeparateMessages"
+            class="message-sender-logo">
             <img src="./assets/img-code.svg">
           </div>
-          Lorem ipsum dolor sit amet
+          <div class="message-body">
+            <p *ngIf="messageObj.firstMessage === true || messageObj.shouldSeparateMessages" class="message-sender">
+              Lorem ipsum dolor sit amet
+            </p>
+            <p *ngIf="!messageObj.hasLink"
+              [ngClass]="{'message-aligned': !messageObj.firstMessage && !messageObj.shouldSeparateMessages}">
+              {{ messageObj.message }}
+            </p>
+            <p>
+              <a href="#" class="message-link" *ngIf="messageObj.hasLink"
+                [ngClass]="{'message-aligned': !messageObj.firstMessage && !messageObj.shouldSeparateMessages}">
+                {{ messageObj.message }}
+              </a>
+            </p>
+          </div>
         </div>
-        <div class="message-body">
-          <!-- <p class="text-title">This is message title</p> -->
-          <p *ngIf="!messageObj.message">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br><br>Nunc pellentesque erat vel
-            magna posuere,
-            vitae imperdiet lorem luctus. In hac habitasse platea dictumst. Curabitur purus nisi, porttitor ut enim
-            nec,
-            dictum egestas lacus. Pellentesque euismod odio ante.
-          </p>
-          <p *ngIf="messageObj.message">{{ messageObj.message }}</p>
-          <!-- <a href="#" class="message-link">https://oauth.vk.com/blank.html</a>
-          <div class="message-link-content">
-            <div class="link-content-description">
-              <div class="text-title">Link content header</div>
-              <div class="text-subtitle">Link content subheader Link content subheader Link content subheader Link
-                contentLink contentLink contentLink contentLink content
-                subheader</div>
-            </div>
-            <div class="link-content-image">
-              <img src="./assets/screen.png">
-            </div>
-          </div> -->
+        <div *ngIf="messageObj.hasLink" class="message-link-content">
+          <div class="link-content-description">
+            <div class="text-title">Link content header</div>
+            <div class="text-subtitle">Link content subheader Link content subheader Link content subheader Link
+              contentLink contentLink contentLink contentLink content
+              subheader</div>
+          </div>
+          <div class="link-content-image">
+            <img src="./assets/screen.png">
+          </div>
         </div>
       </div>
     </div>
@@ -49,7 +53,8 @@
   </div>
   <footer class="area-footer">
     <div>
-      <input type="text" id="message-input" placeholder="Напишите сообщение" (keyup.enter)="sendTimedMessage($event.target.value)">
+      <input type="text" id="message-input" placeholder="Напишите сообщение"
+        (keyup.enter)="sendTimedMessage($event.target.value)">
       <img src="./assets/btn-send.svg">
     </div>
   </footer>
