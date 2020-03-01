@@ -5,7 +5,8 @@
     </div>
     <nav>
       <ul>
-        <li><img [src]="darkMode ? './assets/img-dark-mode.svg' : './assets/img-light-mode.svg'" (click)="switchColorMode()"></li>
+        <li><img [src]="darkMode ? './assets/img-dark-mode.svg' : './assets/img-light-mode.svg'"
+            (click)="switchColorMode()"></li>
         <li><img src="./assets/btn-min.svg" (click)="minimizeWindow()"></li>
         <li><img src="./assets/btn-close.svg" (click)="closeWindow()"></li>
       </ul>
@@ -49,20 +50,39 @@
       </div> -->
       <div class="container">
         <h1>Light / Dark Mode</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam doloremque quas eius est molestiae quia quos vitae cupiditate, ducimus voluptatum in placeat officiis magni sed sit. Dignissimos dolorem obcaecati autem?</p>
+        <p>
+          Toggle between light and dark mode of application using the button in the framebar
+        </p>
       </div>
+      <!-- <div>
+        <blockquote class="container">
+          <p><q>The U.S. is fast approaching $19,000,000,000,000.00 in national debt. This is mathematically impossible
+              to
+              ever pay back &hellip; even if every American was taxed at 100%.</q></p>
+          <footer>Charles Goyette, The Dollar Meltdown</footer>
+        </blockquote>
+        <blockquote class="container">
+          <p><q>79 million Baby Boomers are about to retire, pull their money out of the economy, and demand their $35
+              Trillion Dollars in Social Security &amp; Medicare. Think that through&hellip;</q></p>
+          <footer>Robert Kiyosaki</footer>
+        </blockquote>
+      </div> -->
     </div>
-    <div class="time-range-picker">
+    <div class="wallpaper-info-container">
       <div class="time-range-picker-element">
         123
+      </div>
+      <div class="wallpaper-info-actions">
+        <img src="./assets/img-hide.svg">
+        <a href="#">Hide</a>
       </div>
     </div>
   </div>
   <footer class="area-footer">
-    <!-- <div>
-      <input type="text" id="message-input" placeholder="Напишите сообщение"
-        (keyup.enter)="sendTimedMessage($event.target.value)">
-      <img src="./assets/btn-send.svg">
-    </div> -->
+    <div>
+      <!-- <input type="text" id="message-input" placeholder="Напишите сообщение"
+        (keyup.enter)="sendTimedMessage($event.target.value)"> -->
+      <img src="./assets/btn-send.svg" (click)="getRandomPhoto()">
+    </div>
   </footer>
 </div>

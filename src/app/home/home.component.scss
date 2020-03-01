@@ -45,7 +45,7 @@
     }
   }
 
-  footer {
+  .area-footer {
     display: flex;
     align-items: center;
     background-color: var(--bg);
@@ -57,7 +57,7 @@
     div {
       flex: 1;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
     }
 
     input {
@@ -78,6 +78,11 @@
 
   img {
     width: 18px;
+  }
+
+  a {
+    color: #2f80ed;
+    text-decoration: none;
   }
 
   .message-container {
@@ -109,11 +114,6 @@
 
       .message-aligned {
         margin-left: 50px;
-      }
-
-      .message-link {
-        color: #2f80ed;
-        text-decoration: none;
       }
     }
 
@@ -153,13 +153,27 @@
     }
   }
 
-  .time-range-picker {
-    visibility: hidden;
+  .wallpaper-info-container {
     position: absolute;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    background-color: white;
+    height: 15em;
+    width: 90%;
+    bottom: 1em;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 15px;
+    background-color: var(--bg-panel);
+
+    .wallpaper-info-actions {
+      display: flex;
+      justify-content: flex-end;
+      padding: .5em;
+      > img {
+        width: 13px;
+        margin-right: 3px;
+      }
+    }
   }
 
   .time-range-picker-element {
@@ -189,13 +203,13 @@
   overflow-y: auto;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .container {
   background-color: var(--bg-panel);
-  padding: 2em;
+  padding: 1.5em;
   border-radius: 15px;
 
   h1 {
@@ -206,6 +220,5 @@
   p {
     color: var(--color-text);
     font-size: 1.1em;
-    margin-top: 2em;
   }
 }

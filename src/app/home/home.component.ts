@@ -3,6 +3,9 @@ import { ElectronService } from '../core/services/electron/electron.service';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
+import fetch from 'node-fetch';
+import Unsplash, { toJson } from 'unsplash-js';
+
 declare var document: any;
 declare var window: any;
 
@@ -12,6 +15,8 @@ declare var window: any;
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    unsplash = new Unsplash({ accessKey: 'Q66eSgkxjkKhmJny2qln7Ep8K-lpxaKWzxF8LYEvw4E', timeout: 1500 });
+
     darkMode = true;
 
     messages: object[] = [];
@@ -94,6 +99,22 @@ export class HomeComponent implements OnInit {
 
         document.getElementById('message-input').value = '';
         this.addTimer(() => { this.messageNotifier.next(e); }, 0);
+    }
+
+    public getRandomPhoto() {
+        this.unsplash.photos.getRandomPhoto({ query: 'dark minimal', orientation: 'landscape' })
+            .then(toJson)
+            .then(json => {
+                console.log(json);
+
+                // window.open(json.urls.full, '_blank');
+                // window.open(json.urls.regular, '_blank');
+                // window.open(json.urls.small, '_blank');
+                // window.open(json.urls.thumb, '_blank');
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
 
     public switchColorMode() {
