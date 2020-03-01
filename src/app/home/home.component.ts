@@ -12,6 +12,8 @@ declare var window: any;
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    darkMode = true;
+
     messages: object[] = [];
     messageNotifier = new Subject<string>();
 
@@ -91,7 +93,28 @@ export class HomeComponent implements OnInit {
         }
 
         document.getElementById('message-input').value = '';
-        this.addTimer(() => { this.messageNotifier.next(e); }, 3000);
+        this.addTimer(() => { this.messageNotifier.next(e); }, 0);
+    }
+
+    public switchColorMode() {
+        let mode = "";
+        let runTransition = () => {
+            document.documentElement.classList.add('transition');
+            window.setTimeout(() => {
+                document.documentElement.classList.remove('transition');
+            }, 1000);
+        }
+
+        runTransition();
+
+        if (this.darkMode) {
+            mode = 'light';    
+        } else {
+            mode = 'dark';
+        }
+
+        this.darkMode = !this.darkMode;
+        document.documentElement.setAttribute('data-theme', mode);
     }
 
     public minimizeWindow() {

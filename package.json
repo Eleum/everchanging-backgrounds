@@ -1,12 +1,7 @@
 {
-  "name": "electron-scheduled-messages",
-  "version": "0.1.0",
-  "description": "Angular 9 with Electron",
+  "name": "everchanging-backgrounds",
+  "version": "0.1.1",
   "homepage": "",
-  "author": {
-    "name": "Dmitry Vasilevich",
-    "email": "dzvasilevich@gmail.com"
-  },
   "keywords": [
     "angular",
     "angular 9",
@@ -90,5 +85,8 @@
   },
   "engines": {
     "node": ">=10.13.0"
+  },
+  "dependencies": {
+    "unsplash-js": "^6.0.0"
   }
 }

@@ -1,14 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url("https://fonts.googleapis.com/css?family=Open Sans:400,600,700");
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
+html {
+  --bg: #fcfcfc;
+  --bg-panel: #ebebeb;
+  --color-headings: #0088ff;
+  --color-text: #333333;
+}
+
+html[data-theme='dark'] {
+  --bg: #333333;
+  --bg-panel: #434343;
+  --color-headings: #3694ff;
+  --color-text: #b5b5b5;
+}
+
 body {
   font-size: 14px;
-  font-family: 'Open Sans';
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 750ms !important;
+  transition-delay: 0 !important;
 }

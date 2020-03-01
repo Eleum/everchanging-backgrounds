@@ -1,8 +1,12 @@
 <div class="area-container">
   <header class="area-header">
-    <strong>blablabla service</strong>
+    <div class="header-logo">
+      <img src="./assets/img-aperture.svg">
+      <strong>everchanging wallpapers</strong>
+    </div>
     <nav>
       <ul>
+        <li><img [src]="darkMode ? './assets/img-dark-mode.svg' : './assets/img-light-mode.svg'" (click)="switchColorMode()"></li>
         <li><img src="./assets/btn-min.svg" (click)="minimizeWindow()"></li>
         <li><img src="./assets/btn-close.svg" (click)="closeWindow()"></li>
       </ul>
@@ -10,7 +14,7 @@
   </header>
   <div class="area-body-container">
     <div class="area-body">
-      <div *ngFor="let messageObj of messages" class="message-container">
+      <!-- <div *ngFor="let messageObj of messages" class="message-container">
         <div class="message-content">
           <div *ngIf="messageObj.firstMessage === true || messageObj.shouldSeparateMessages"
             class="message-sender-logo">
@@ -43,6 +47,10 @@
             <img src="./assets/screen.png">
           </div>
         </div>
+      </div> -->
+      <div class="container">
+        <h1>Light / Dark Mode</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam doloremque quas eius est molestiae quia quos vitae cupiditate, ducimus voluptatum in placeat officiis magni sed sit. Dignissimos dolorem obcaecati autem?</p>
       </div>
     </div>
     <div class="time-range-picker">

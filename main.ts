@@ -18,14 +18,15 @@ function createWindow(): BrowserWindow {
     width: 340,
     height: 660,
     resizable: false,
+    maximizable: false,
+    frame: false,
+    transparent: true,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
       webSecurity: false,
       nativeWindowOpen: true
-    },
-    frame: false,
-    transparent: true
+    }
   });
 
   if (serve) {
