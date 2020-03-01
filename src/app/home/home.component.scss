@@ -21,6 +21,7 @@
 
     strong {
       color: #fff;
+      font-family: "Trade Winds";
     }
 
     nav {
@@ -47,10 +48,11 @@
   footer {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: var(--bg);
     border: 1px solid var(--bg-panel);
     border-radius: 0px 0px 15px 15px;
     margin-bottom: 1px;
+    height: 40px;
 
     div {
       flex: 1;
@@ -190,7 +192,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 .container {
   background-color: var(--bg-panel);
