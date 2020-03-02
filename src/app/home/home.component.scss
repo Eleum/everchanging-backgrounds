@@ -165,25 +165,70 @@
     border-radius: 15px;
     background-color: var(--bg-panel);
 
+    img {
+      width: 10px;
+      margin-right: 3px;
+    }
+
+    a {
+      color: white;
+    }
+
+    .wallpaper-info-description {
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+      color: white;
+      > h1 {
+        margin: 0;
+      }
+
+      .wallpaper-info-metrics {
+        display: flex;
+        margin: 1em 0;
+        > div {
+          margin-right: 1em;
+        }
+      }
+    }
+
     .wallpaper-info-actions {
       display: flex;
       justify-content: flex-end;
-      padding: .5em;
-      > img {
-        width: 13px;
-        margin-right: 3px;
-      }
+      padding: 0 1em 1em;  
     }
   }
+}
 
-  .time-range-picker-element {
-    border: 1px solid;
-    border-radius: 15px 15px 0px 0px;
-    border-left: inherit;
-    border-right: inherit;
-    border-bottom: inherit;
-    border-color: var(--bg-panel);
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+.wallpaper-info-text {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 4, $bgColor: var(--color-text));
+  margin: 0;
+  color: var(--color-text);
 }
 
 .area-body-container {
