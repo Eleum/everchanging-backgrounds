@@ -156,9 +156,9 @@
   .wallpaper-info-container {
     position: absolute;
     height: 15em;
-    width: 90%;
-    bottom: 1em;
-    left: 5%;
+    width: 80%;
+    bottom: 2em;
+    left: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -171,14 +171,15 @@
     }
 
     a {
-      color: white;
+      color: var(--color-description);
+      text-decoration: underline;
     }
 
     .wallpaper-info-description {
       display: flex;
       flex-direction: column;
       padding: 1em;
-      color: white;
+      color: var(--color-description);
       > h1 {
         margin: 0;
       }
@@ -195,27 +196,27 @@
     .wallpaper-info-actions {
       display: flex;
       justify-content: flex-end;
-      padding: 0 1em 1em;  
+      padding: 0 1em 1em;
     }
   }
 }
 
-@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white) {
   overflow: hidden;
   position: relative;
   line-height: $lineHeight;
-  max-height: $lineHeight * $lineCount; 
+  max-height: $lineHeight * $lineCount;
   text-align: justify;
   margin-right: -1em;
   padding-right: 1em;
   &:before {
-    content: '...';
+    content: "...";
     position: absolute;
     right: 0;
     bottom: 0;
   }
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     width: 1em;
@@ -236,6 +237,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg);
+  border-left: 1px solid var(--bg-panel);
+  border-right: 1px solid var(--bg-panel);
+  border-bottom: 1px solid var(--bg-panel);
+  border-radius: 0 0 15px 15px;
 }
 
 .area-body {
@@ -246,10 +252,15 @@
   padding: 15px;
   height: 0px;
   overflow-y: auto;
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
+
+  background: url("../../assets/background.jpg");
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  margin: 1em;
 }
 
 .container {

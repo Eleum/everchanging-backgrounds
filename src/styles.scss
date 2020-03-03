@@ -13,6 +13,7 @@ html {
   --bg-panel: #ebebeb;
   --color-headings: #0088ff;
   --color-text: #333333;
+  --color-description: black;
 }
 
 html[data-theme='dark'] {
@@ -20,6 +21,7 @@ html[data-theme='dark'] {
   --bg-panel: #434343;
   --color-headings: #3694ff;
   --color-text: #b5b5b5;
+  --color-description: white;
 }
 
 body {

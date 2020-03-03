@@ -48,12 +48,12 @@
           </div>
         </div>
       </div> -->
-      <div class="container">
+      <!-- <div class="container">
         <h1>Light / Dark Mode</h1>
         <p>
           Toggle between light and dark mode of application using the button in the framebar
         </p>
-      </div>
+      </div> -->
       <!-- <div>
         <blockquote class="container">
           <p><q>The U.S. is fast approaching $19,000,000,000,000.00 in national debt. This is mathematically impossible
@@ -72,22 +72,22 @@
       <div class="wallpaper-info-description">
         <h1>Love on the air</h1>
         <div class="wallpaper-info-metrics">
-          <div><span><img src="./assets/img-eye.svg"></span> likes</div>
-          <div><span><img src="./assets/img-location.svg"></span> location</div>
+          <div><span><img [src]="darkMode ? './assets/img-eye.svg' : './assets/img-eye-dark.svg'"></span> likes</div>
+          <div><span><img [src]="darkMode ? './assets/img-location.svg' : './assets/img-location-dark.svg'"></span> location</div>
         </div>
         <p class="wallpaper-info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo architecto nemo quis ratione repudiandae, ipsum aut?</p>
       </div>
       <div class="wallpaper-info-actions">
-        <img src="./assets/img-hide.svg">
+        <img [src]="darkMode ? './assets/img-hide.svg' : './assets/img-hide-dark.svg'">
         <a href="#">Hide</a>
       </div>
     </div>
   </div>
-  <footer class="area-footer">
+  <!-- <footer class="area-footer">
     <div>
-      <!-- <input type="text" id="message-input" placeholder="Напишите сообщение"
-        (keyup.enter)="sendTimedMessage($event.target.value)"> -->
+      <input type="text" id="message-input" placeholder="Напишите сообщение"
+        (keyup.enter)="sendTimedMessage($event.target.value)">
       <img src="./assets/btn-send.svg" (click)="getRandomPhoto()">
     </div>
-  </footer>
+  </footer> -->
 </div>
