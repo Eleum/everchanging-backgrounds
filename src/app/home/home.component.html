@@ -13,6 +13,26 @@
     </nav>
   </header>
   <div class="area-body-container">
+    <div class="area-tags">
+      <div class="tags">
+        <button class="tag-button">
+          tag1
+        </button>
+        <button class="tag-button">
+          tag2
+        </button>
+        <button class="tag-button">
+          tag3
+        </button>
+        <button class="tag-button">
+          tag4
+        </button>
+      </div>
+      <button class="tag-button">
+        <img [src]="darkMode ? './assets/img-hashtag.svg' : './assets/img-hashtag-dark.svg'">
+        ...
+      </button>
+    </div>
     <div class="area-body">
       <!-- <div *ngFor="let messageObj of messages" class="message-container">
         <div class="message-content">
@@ -73,9 +93,12 @@
         <h1>Love on the air</h1>
         <div class="wallpaper-info-metrics">
           <div><span><img [src]="darkMode ? './assets/img-eye.svg' : './assets/img-eye-dark.svg'"></span> likes</div>
-          <div><span><img [src]="darkMode ? './assets/img-location.svg' : './assets/img-location-dark.svg'"></span> location</div>
+          <div><span><img [src]="darkMode ? './assets/img-location.svg' : './assets/img-location-dark.svg'"></span>
+            location</div>
         </div>
-        <p class="wallpaper-info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo architecto nemo quis ratione repudiandae, ipsum aut?</p>
+        <p class="wallpaper-info-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla
+          expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo
+          architecto nemo quis ratione repudiandae, ipsum aut?</p>
       </div>
       <div class="wallpaper-info-actions">
         <img [src]="darkMode ? './assets/img-hide.svg' : './assets/img-hide-dark.svg'">
