@@ -182,6 +182,7 @@
       color: var(--color-description);
       > h1 {
         margin: 0;
+        line-height: 1em;
       }
 
       .wallpaper-info-metrics {
@@ -227,7 +228,7 @@
 }
 
 .wallpaper-info-text {
-  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 4, $bgColor: var(--color-text));
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: var(--color-text));
   margin: 0;
   color: var(--color-text);
 }
@@ -250,6 +251,12 @@
   display: flex;
   margin: 0.5em 0;
   justify-content: space-between;
+  > div:nth-child(1) {
+    margin-right: 0.25em;
+  }
+  > div:nth-child(2) {
+    margin-right: 0.2em;
+  }
 
   .tags {
     flex: 1;
@@ -257,9 +264,16 @@
     > button {
       margin-right: 0.3em;
     }
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-  .tag-button {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn-tag {
     background-color: var(--bg);
     color: var(--color-description);
     border: 1px solid var(--bg-panel);

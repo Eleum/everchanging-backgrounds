@@ -15,23 +15,30 @@
   <div class="area-body-container">
     <div class="area-tags">
       <div class="tags">
-        <button class="tag-button">
-          tag1
+        <button class="btn-tag">
+          Cinema
         </button>
-        <button class="tag-button">
-          tag2
+        <button class="btn-tag">
+          Coffee
         </button>
-        <button class="tag-button">
-          tag3
+        <button class="btn-tag">
+          Restaurant
         </button>
-        <button class="tag-button">
-          tag4
+        <button class="btn-tag">
+          Relaxation
         </button>
       </div>
-      <button class="tag-button">
-        <img [src]="darkMode ? './assets/img-hashtag.svg' : './assets/img-hashtag-dark.svg'">
-        ...
-      </button>
+      <div>
+        <button class="btn-tag">
+          + 1
+        </button>
+      </div>
+      <div>
+        <button class="btn-tag">
+          <img [src]="darkMode ? './assets/img-hashtag.svg' : './assets/img-hashtag-dark.svg'">
+          ...
+        </button>
+      </div>
     </div>
     <div class="area-body">
       <!-- <div *ngFor="let messageObj of messages" class="message-container">
@@ -90,7 +97,7 @@
     </div>
     <div class="wallpaper-info-container">
       <div class="wallpaper-info-description">
-        <h1>Love on the air</h1>
+        <h1>Today was a good day</h1>
         <div class="wallpaper-info-metrics">
           <div><span><img [src]="darkMode ? './assets/img-eye.svg' : './assets/img-eye-dark.svg'"></span> likes</div>
           <div><span><img [src]="darkMode ? './assets/img-location.svg' : './assets/img-location-dark.svg'"></span>
