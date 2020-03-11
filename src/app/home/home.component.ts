@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import fetch from 'node-fetch';
 import Unsplash, { toJson } from 'unsplash-js';
+import { isNgTemplate } from '@angular/compiler';
 
 declare var document: any;
 declare var window: any;
@@ -90,6 +91,15 @@ export class HomeComponent implements OnInit {
 
         this.addTimer(() => { clearTimeout(timer) }, 2000);
         this.addTimer(() => { addMessage('42') }, 7000);
+        
+        const tags = document.getElementsByClassName('tags')[0];
+        tags.addEventListener('wheel', (e: any) => {
+            if (e.deltaY > 0) {
+                tags.scrollLeft += 50;
+            } else {
+                tags.scrollLeft -= 50;
+            }
+        })
     }
 
     public sendTimedMessage(e: any) {
