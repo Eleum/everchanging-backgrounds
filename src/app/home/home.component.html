@@ -95,9 +95,9 @@
         </blockquote>
       </div> -->
     </div>
-    <div class="wallpaper-info-container">
+    <div class="wallpaper-info-container animated">
       <div class="wallpaper-info-description">
-        <h1>Today was a good day</h1>
+        <h1>today was a good day</h1>
         <div class="wallpaper-info-metrics">
           <div><span><img [src]="darkMode ? './assets/img-eye.svg' : './assets/img-eye-dark.svg'"></span> likes</div>
           <div><span><img [src]="darkMode ? './assets/img-location.svg' : './assets/img-location-dark.svg'"></span>
@@ -109,9 +109,12 @@
       </div>
       <div class="wallpaper-info-actions">
         <img [src]="darkMode ? './assets/img-hide.svg' : './assets/img-hide-dark.svg'">
-        <a href="#">Hide</a>
+        <a href="#" id="hideLink">Hide</a>
       </div>
     </div>
+    <button class="btn-tag btn-show-description animated" hidden>
+      <img [src]="darkMode ? './assets/img-chevron-up.svg' : './assets/img-chevron-up-dark.svg'">
+    </button>
   </div>
   <!-- <footer class="area-footer">
     <div>

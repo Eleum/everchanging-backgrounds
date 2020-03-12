@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import fetch from 'node-fetch';
 import Unsplash, { toJson } from 'unsplash-js';
 import { isNgTemplate } from '@angular/compiler';
+import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
 
 declare var document: any;
 declare var window: any;
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
     unsplash = new Unsplash({ accessKey: 'Q66eSgkxjkKhmJny2qln7Ep8K-lpxaKWzxF8LYEvw4E', timeout: 1500 });
 
     darkMode = true;
+    descriptionHidden = false;
 
     messages: object[] = [];
     messageNotifier = new Subject<string>();
@@ -91,7 +93,7 @@ export class HomeComponent implements OnInit {
 
         this.addTimer(() => { clearTimeout(timer) }, 2000);
         this.addTimer(() => { addMessage('42') }, 7000);
-        
+
         const tags = document.getElementsByClassName('tags')[0];
         tags.addEventListener('wheel', (e: any) => {
             if (e.deltaY > 0) {
@@ -99,7 +101,43 @@ export class HomeComponent implements OnInit {
             } else {
                 tags.scrollLeft -= 50;
             }
-        })
+        });
+
+        const wallpaperDescr = document.getElementsByClassName('wallpaper-info-container')[0];
+        const descrHideLink = document.getElementById('hideLink');
+        const descrShowButton = document.getElementsByClassName('btn-show-description')[0];
+        descrHideLink.addEventListener('click', (e: any) => {
+            if (descrShowButton.hidden === true) {
+                descrShowButton.hidden = false;
+            }
+            if (!this.descriptionHidden) {
+                descrShowButton.classList.remove('fadeOutDown');
+                descrShowButton.classList.add('fadeInUp');
+                wallpaperDescr.classList.remove('fadeInUp');
+                wallpaperDescr.classList.add('fadeOutDown');
+                this.descriptionHidden = !this.descriptionHidden;
+            }
+            e.preventDefault();
+        });
+        descrShowButton.addEventListener('click', (e: any) => {
+            if (this.descriptionHidden) {
+                descrShowButton.classList.remove('fadeInUp');
+                descrShowButton.classList.add('fadeOutDown');
+                wallpaperDescr.classList.remove('fadeOutDown');
+                wallpaperDescr.classList.add('fadeInUp');
+                this.descriptionHidden = !this.descriptionHidden;
+            }
+        });
+        document.addEventListener('keyup', (e: any) => {
+            if (e.keyCode !== 32){
+                return;
+            }
+            if (this.descriptionHidden) {
+                descrShowButton.click();
+            } else {
+                descrHideLink.click();
+            }
+        });
     }
 
     public sendTimedMessage(e: any) {
