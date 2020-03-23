@@ -33,13 +33,7 @@ export class HomeComponent implements OnInit {
         const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
         this.regexUrl = new RegExp(expression);
     }
-
-    items = [
-        { title: 'Slide 1' },
-        { title: 'Slide 2' },
-        { title: 'Slide 3' },
-    ];
-
+    
     ngOnInit() {
         const regexUrl = this.regexUrl;
         const timers = this.timers;
