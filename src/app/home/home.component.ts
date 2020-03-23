@@ -5,8 +5,6 @@ import { Subject } from 'rxjs';
 
 import fetch from 'node-fetch';
 import Unsplash, { toJson } from 'unsplash-js';
-import { isNgTemplate } from '@angular/compiler';
-import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_transform';
 
 declare var document: any;
 declare var window: any;
@@ -31,10 +29,16 @@ export class HomeComponent implements OnInit {
 
     regexUrl: RegExp;
 
-    constructor(private http: HttpClient, private electron: ElectronService) { 
+    constructor(private http: HttpClient, private electron: ElectronService) {
         const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
         this.regexUrl = new RegExp(expression);
     }
+
+    items = [
+        { title: 'Slide 1' },
+        { title: 'Slide 2' },
+        { title: 'Slide 3' },
+    ];
 
     ngOnInit() {
         const regexUrl = this.regexUrl;
@@ -62,13 +66,13 @@ export class HomeComponent implements OnInit {
         }
 
         function addMessage(message: string) {
-            messages.push({ 
+            messages.push({
                 message,
-                shouldSeparateMessages, 
-                firstMessage: messages.length === 0, 
+                shouldSeparateMessages,
+                firstMessage: messages.length === 0,
                 hasLink: message.match(regexUrl)
             });
-            
+
             clearTimeout(separateMessagesTimer);
             shouldSeparateMessages = false;
             separateMessagesTimer = setTimeout(() => {
@@ -129,7 +133,7 @@ export class HomeComponent implements OnInit {
             }
         });
         document.addEventListener('keyup', (e: any) => {
-            if (e.keyCode !== 32){
+            if (e.keyCode !== 32) {
                 return;
             }
             if (this.descriptionHidden) {
@@ -177,7 +181,7 @@ export class HomeComponent implements OnInit {
         runTransition();
 
         if (this.darkMode) {
-            mode = 'light';    
+            mode = 'light';
         } else {
             mode = 'dark';
         }
