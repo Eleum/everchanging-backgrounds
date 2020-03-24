@@ -289,20 +289,29 @@
 }
 
 .area-body {
+  // flex: 1 1 auto;
+  // background-color: var(--bg);
+  // border-left: 1px solid var(--bg-panel);
+  // border-right: 1px solid var(--bg-panel);
+  // border-radius: 15px;
+  // overflow-y: auto;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: stretch;
+  // padding: 1em;
+  background: url("../../assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-container {
   flex: 1 1 auto;
   background-color: var(--bg);
   border-left: 1px solid var(--bg-panel);
   border-right: 1px solid var(--bg-panel);
+  border-radius: 15px;
   overflow-y: auto;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 1em;
-
-  background: url("../../assets/bg.jpg");
-  border-radius: 15px;
-  background-size: cover;
-  background-position: center;
 }
 
 .btn-show-description {

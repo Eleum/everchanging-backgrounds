@@ -1,18 +1,7 @@
-<ngu-carousel #myCarousel [inputs]="tile" [dataSource]="carouselInstances">
-    <ngu-tile *nguCarouselDef="let item; let i = index">
-        <ngu-carousel #myCarousel [inputs]="tile" [dataSource]="carouselTiles[i]" (carouselLoad)="loadCarouselTile(i)">
-            <ngu-tile *nguCarouselDef="let url; let j = index">
-                <div class="tile" [style.background]="'url(' + url + ')'" style="min-height: 200px;">
-                    <!-- <h1>{{ j }}</h1> -->
-                </div>
-            </ngu-tile>
-            <button NguCarouselPrev class="leftRs" [style.opacity]="myCarousel.isFirst ? 0.5:1">&lt;</button>
-            <button NguCarouselNext class="rightRs" [style.opacity]="myCarousel.isLast ? 0.5:1">&gt;</button>
-            <!-- <ul class="myPoint" NguCarouselPoint>
-                <li *ngFor="let point of myCarousel.pointNumbers; let j = index"
-                    [class.active]="point == myCarousel.activePoint" (click)="myCarousel.moveTo(point)"
-                    [style.background]="'url(' + carouselTileItems[j] + ')'"></li>
-            </ul> -->
-        </ngu-carousel>
+<ngu-carousel #carousel class="carousel" [inputs]="tileConfig" [dataSource]="tiles" (onMove)="slideChange($event)">
+    <ngu-tile *nguCarouselDef="let url; let j = index">
+        <div class="tile" [style.background]="'url(' + url + ')'"></div>
     </ngu-tile>
+    <button NguCarouselPrev class="btn-carousel-prev" [style.opacity]="carousel.isFirst ? 0.5:1">&lt;</button>
+    <button NguCarouselNext class="btn-carousel-next" [style.opacity]="carousel.isLast ? 0.5:1">&gt;</button>
 </ngu-carousel>
