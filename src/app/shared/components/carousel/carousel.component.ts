@@ -7,9 +7,11 @@ import { NguCarouselConfig, NguCarouselStore } from '@ngu/carousel';
     styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit, AfterViewInit {
+    carouselHover = false;
+
     images = [
-        './assets/bg.jpg',
-        './assets/bg1.jpg'
+        './assets/bg1.jpg',
+        './assets/bg.jpg'
     ];
     tiles = [];
     tileConfig: NguCarouselConfig = {
@@ -36,7 +38,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
     }    
 
     public slideChange(data: NguCarouselStore) {
-        console.log(data);
+
     }
 
     private loadCarouselSlides() {

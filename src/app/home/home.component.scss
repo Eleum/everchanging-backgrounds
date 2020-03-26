@@ -321,12 +321,17 @@
   height: 6%;
   left: 45%;
   z-index: 1;
-  background-color: var(--bg-panel);
-  img {
+  border: 1px var(--bg-panel) solid;
+  background-color: var(--bg);
+  > img {
     display: block;
     margin: auto;
     width: 1.3em;
   }
+}
+
+.btn-show-description:focus {
+  outline: none;
 }
 
 .animated {

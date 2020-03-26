@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NguCarouselModule } from '@ngu/carousel';
+import { FormsModule } from '@angular/forms';
 
+import { NguCarouselModule } from '@ngu/carousel';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { PageNotFoundComponent } from './components/';
+import { CarouselComponent } from './components/';
 import { WebviewDirective } from './directives/';
-import { FormsModule } from '@angular/forms';
 
-import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
