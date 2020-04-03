@@ -1,8 +1,7 @@
-<ngu-carousel #carousel class="carousel" [inputs]="tileConfig" [dataSource]="tiles" (onMove)="slideChange($event)"
+<ngu-carousel #carousel class="carousel" [inputs]="carouselConfig" [dataSource]="slides" (onMove)="slideChange($event)"
     (mouseover)="carouselHover = true" (mouseout)="carouselHover = false">
     <ngu-tile *nguCarouselDef="let url; let j = index">
-        <div class="tile" [style.background]="'url(' + url + ')'">
-        </div>
+        <div class="tile" [style.background]="'url(' + url + ')'"></div>
     </ngu-tile>
     <button NguCarouselPrev class="btn-carousel btn-carousel-prev" [style.opacity]="carousel.isFirst ? 0.5 : inherit"
         [hidden]="!carouselHover">

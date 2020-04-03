@@ -7,7 +7,7 @@ module.exports = (config, options) => {
     if (options.customWebpackConfig.target) {
         config.target = options.customWebpackConfig.target;
     } else if (options.fileReplacements) {
-        for(let fileReplacement of options.fileReplacements) {
+        for (let fileReplacement of options.fileReplacements) {
             if (fileReplacement.replace !== 'src/environments/environment.ts') {
                 continue;
             }

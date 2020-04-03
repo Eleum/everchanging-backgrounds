@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { NguCarouselConfig, NguCarouselStore } from '@ngu/carousel';
 
 @Component({
@@ -7,14 +7,16 @@ import { NguCarouselConfig, NguCarouselStore } from '@ngu/carousel';
     styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit, AfterViewInit {
+    @Output() slidechanged: EventEmitter<number> = new EventEmitter();
+
     carouselHover = false;
 
     images = [
         './assets/bg1.jpg',
         './assets/bg.jpg'
     ];
-    tiles = [];
-    tileConfig: NguCarouselConfig = {
+    slides = [];
+    carouselConfig: NguCarouselConfig = {
         grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
         slide: 1,
         speed: 850,
@@ -37,12 +39,12 @@ export class CarouselComponent implements OnInit, AfterViewInit {
         this.setElementsStyle();
     }    
 
-    public slideChange(data: NguCarouselStore) {
-
+    public slideChange(e: NguCarouselStore) {
+        this.slidechanged.emit(e.currentSlide);
     }
 
     private loadCarouselSlides() {
-        this.tiles = this.tiles.concat(this.images);
+        this.slides = this.slides.concat(this.images);
     }
 
     private setElementsStyle() {

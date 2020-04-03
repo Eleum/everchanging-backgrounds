@@ -18,7 +18,12 @@ export class HomeComponent implements OnInit {
     unsplash = new Unsplash({ accessKey: 'Q66eSgkxjkKhmJny2qln7Ep8K-lpxaKWzxF8LYEvw4E', timeout: 1500 });
 
     darkMode = true;
-    descriptionHidden = false;
+    isDescriptionHidden = false;
+
+    wallpapers = [];
+    wallpaperLikes = 'likes';
+    wallpaperLocation = 'location';
+    wallpaperDescription = '';
 
     messages: object[] = [];
     messageNotifier = new Subject<string>();
@@ -33,7 +38,7 @@ export class HomeComponent implements OnInit {
         const expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
         this.regexUrl = new RegExp(expression);
     }
-    
+
     ngOnInit() {
         const regexUrl = this.regexUrl;
         const timers = this.timers;
@@ -44,7 +49,7 @@ export class HomeComponent implements OnInit {
         this.messageNotifier.subscribe({ next: (value) => addMessage(value) });
 
         this.addTimer = function (fn, delay) {
-            var id = window.setTimeout(() => {
+            const id = window.setTimeout(() => {
                 fn();
                 delete timers[id];
             }, delay);
@@ -53,7 +58,7 @@ export class HomeComponent implements OnInit {
             return id;
         }
 
-        var _clearTimeout = window.clearTimeout;
+        const _clearTimeout = window.clearTimeout;
         window.clearTimeout = function (id) {
             delete timers[id];
             _clearTimeout(id);
@@ -108,34 +113,36 @@ export class HomeComponent implements OnInit {
             if (descrShowButton.hidden === true) {
                 descrShowButton.hidden = false;
             }
-            if (!this.descriptionHidden) {
+            if (!this.isDescriptionHidden) {
                 descrShowButton.classList.remove('fadeOutDown');
                 descrShowButton.classList.add('fadeInUp');
                 wallpaperDescr.classList.remove('fadeInUp');
                 wallpaperDescr.classList.add('fadeOutDown');
-                this.descriptionHidden = !this.descriptionHidden;
+                this.isDescriptionHidden = !this.isDescriptionHidden;
             }
             e.preventDefault();
         });
         descrShowButton.addEventListener('click', (e: any) => {
-            if (this.descriptionHidden) {
+            if (this.isDescriptionHidden) {
                 descrShowButton.classList.remove('fadeInUp');
                 descrShowButton.classList.add('fadeOutDown');
                 wallpaperDescr.classList.remove('fadeOutDown');
                 wallpaperDescr.classList.add('fadeInUp');
-                this.descriptionHidden = !this.descriptionHidden;
+                this.isDescriptionHidden = !this.isDescriptionHidden;
             }
         });
         document.addEventListener('keyup', (e: any) => {
             if (e.keyCode !== 32) {
                 return;
             }
-            if (this.descriptionHidden) {
+            if (this.isDescriptionHidden) {
                 descrShowButton.click();
             } else {
                 descrHideLink.click();
             }
         });
+
+        this.wallpaperDescription = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo architecto nemo quis ratione repudiandae, ipsum aut?';
     }
 
     public sendTimedMessage(e: any) {
@@ -157,15 +164,23 @@ export class HomeComponent implements OnInit {
                 // window.open(json.urls.regular, '_blank');
                 // window.open(json.urls.small, '_blank');
                 // window.open(json.urls.thumb, '_blank');
+
+                if (this.wallpapers.length === 1) {
+                    this.wallpaperDescription = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo architecto nemo quis ratione repudiandae, ipsum aut?";
+                }
             })
             .catch(err => {
                 console.error(err);
             });
     }
 
+    public changeSlideDescription(currentSlide: number) {
+        
+    }
+
     public switchColorMode() {
         let mode = "";
-        let runTransition = () => {
+        const runTransition = () => {
             document.documentElement.classList.add('transition');
             window.setTimeout(() => {
                 document.documentElement.classList.remove('transition');
