@@ -36,3 +36,9 @@ html.transition *:after {
   transition: all 750ms !important;
   transition-delay: 0 !important;
 }
+
+// required to properly display carousel
+
+.ngu-touch-container, .tile {
+  height: 100%;
+}

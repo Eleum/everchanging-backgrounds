@@ -6,17 +6,13 @@ import { NguCarouselConfig, NguCarouselStore } from '@ngu/carousel';
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.scss']
 })
-export class CarouselComponent implements OnInit, AfterViewInit {
+export class CarouselComponent {
     @Output() slidechanged: EventEmitter<number> = new EventEmitter();
 
-    carouselHover = false;
+    private carouselHover = false;
 
-    images = [
-        './assets/bg1.jpg',
-        './assets/bg.jpg'
-    ];
-    slides = [];
-    carouselConfig: NguCarouselConfig = {
+    private slides = [];
+    private carouselConfig: NguCarouselConfig = {
         grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
         slide: 1,
         speed: 850,
@@ -31,26 +27,11 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 
     constructor() { }
 
-    ngOnInit() {
-        this.loadCarouselSlides();
-    }
-
-    ngAfterViewInit() {
-        this.setElementsStyle();
-    }    
-
-    public slideChange(e: NguCarouselStore) {
+    private slideChange(e: NguCarouselStore) {
         this.slidechanged.emit(e.currentSlide);
     }
 
-    private loadCarouselSlides() {
-        this.slides = this.slides.concat(this.images);
-    }
-
-    private setElementsStyle() {
-        (<any>document.getElementsByClassName('ngu-touch-container')[0]).style.height = '100%';
-        Array.from(document.getElementsByClassName('tile')).forEach((element: any) => {
-            element.style.height = '100%';
-        });
+    public addCarouselSlide(slide: any) {
+        this.slides.push(slide.image);
     }
 }

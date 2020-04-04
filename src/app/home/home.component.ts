@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ElectronService } from '../core/services/electron/electron.service';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
 import fetch from 'node-fetch';
 import Unsplash, { toJson } from 'unsplash-js';
+
+import { CarouselComponent } from '../shared/components/carousel/carousel.component';
 
 declare var document: any;
 declare var window: any;
@@ -14,13 +16,18 @@ declare var window: any;
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+    @ViewChild(CarouselComponent) carousel: CarouselComponent;
+
     unsplash = new Unsplash({ accessKey: 'Q66eSgkxjkKhmJny2qln7Ep8K-lpxaKWzxF8LYEvw4E', timeout: 1500 });
 
     darkMode = true;
     isDescriptionHidden = false;
 
-    wallpapers = [];
+    wallpapers = [
+        { image: './assets/bg1.jpg' },
+        { image: './assets/bg.jpg' }
+    ];
     wallpaperLikes = 'likes';
     wallpaperLocation = 'location';
     wallpaperDescription = '';
@@ -143,6 +150,12 @@ export class HomeComponent implements OnInit {
         });
 
         this.wallpaperDescription = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo architecto nemo quis ratione repudiandae, ipsum aut?';
+
+        // this.getRandomPhoto();
+    }
+
+    ngAfterViewInit() {
+        this.addNewSlide();
     }
 
     public sendTimedMessage(e: any) {
@@ -160,10 +173,10 @@ export class HomeComponent implements OnInit {
             .then(json => {
                 console.log(json);
 
-                // window.open(json.urls.full, '_blank');
-                // window.open(json.urls.regular, '_blank');
-                // window.open(json.urls.small, '_blank');
-                // window.open(json.urls.thumb, '_blank');
+                window.open(json.urls.full, '_blank');
+                window.open(json.urls.regular, '_blank');
+                window.open(json.urls.small, '_blank');
+                window.open(json.urls.thumb, '_blank');
 
                 if (this.wallpapers.length === 1) {
                     this.wallpaperDescription = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis nulla expedita consequuntur distinctio, odit eum suscipit? Quidem consequatur iure blanditiis alias provident illo architecto nemo quis ratione repudiandae, ipsum aut?";
@@ -174,8 +187,14 @@ export class HomeComponent implements OnInit {
             });
     }
 
+    private addNewSlide() {
+        this.wallpapers.forEach(wallpaper => {
+            this.carousel.addCarouselSlide({ image: wallpaper.image });
+        });
+    }
+
     public changeSlideDescription(currentSlide: number) {
-        
+        console.log(currentSlide);
     }
 
     public switchColorMode() {

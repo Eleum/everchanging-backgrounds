@@ -1,14 +1,14 @@
 <ngu-carousel #carousel class="carousel" [inputs]="carouselConfig" [dataSource]="slides" (onMove)="slideChange($event)"
     (mouseover)="carouselHover = true" (mouseout)="carouselHover = false">
     <ngu-tile *nguCarouselDef="let url; let j = index">
-        <div class="tile" [style.background]="'url(' + url + ')'"></div>
+        <div class="slide" [style.background]="'url(' + url + ')'"></div>
     </ngu-tile>
-    <button NguCarouselPrev class="btn-carousel btn-carousel-prev" [style.opacity]="carousel.isFirst ? 0.5 : inherit"
-        [hidden]="!carouselHover">
+    <button NguCarouselPrev class="btn-carousel btn-carousel-prev"
+        [style.opacity]="slides?.length ? carousel.isFirst ? 0.5 : inherit : 0" [hidden]="!carouselHover">
         <img src="./assets/img-chevron-left.svg">
     </button>
-    <button NguCarouselNext class="btn-carousel btn-carousel-next" [style.opacity]="carousel.isLast ? 0.5 : inherit"
-        [hidden]="!carouselHover">
+    <button NguCarouselNext class="btn-carousel btn-carousel-next"
+        [style.opacity]="slides?.length ? carousel.isLast ? 0.5 : inherit : 0" [hidden]="!carouselHover">
         <img src="./assets/img-chevron-right.svg">
     </button>
 </ngu-carousel>
